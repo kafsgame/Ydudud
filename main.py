@@ -65,7 +65,7 @@ async def echo(message: types.Message):
     # await bot.send_message(message.chat.id, message.text)
     if message.text == 'hgiuei0esdepoawdoaw':
 
-        adding = True
+        globals["adding"] = True
         await message.answer('Отправьте файл для сохранения')
 
 @dp.callback_query_handler(lambda c: c.data == 'done')
