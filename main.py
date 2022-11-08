@@ -48,13 +48,13 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler(content_types=types.message.ContentType.DOCUMENT)
 async def photo(message: types.Message):
-    if globals["adding"]:
+    if globals()["adding"]:
         cfg['file_id'] = message.document.file_id
         f = open('cfg.txt', 'w', encoding='utf-8')
         f.write(json.dumps(cfg, indent=6, ensure_ascii=False))
         f.close()
         await message.answer('Файл сохранен')
-        globals["adding"] = False
+        globals()["adding"] = False
 
 
 
@@ -65,7 +65,7 @@ async def echo(message: types.Message):
     # await bot.send_message(message.chat.id, message.text)
     if message.text == 'hgiuei0esdepoawdoaw':
 
-        globals["adding"] = True
+        globals()["adding"] = True
         await message.answer('Отправьте файл для сохранения')
 
 @dp.callback_query_handler(lambda c: c.data == 'done')
